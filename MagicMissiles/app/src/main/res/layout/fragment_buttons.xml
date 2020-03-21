@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Buttons">
+
+    <Button
+        android:id="@+id/less"
+        android:layout_width="100dp"
+        android:layout_height="60dp"
+        android:layout_marginBottom="20dp"
+        android:gravity="center"
+        android:text="LESS"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toTopOf="@+id/fire"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.264"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/more"
+        android:layout_width="100dp"
+        android:layout_height="60dp"
+        android:layout_marginBottom="20dp"
+        android:text="MORE"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toTopOf="@+id/fire"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.735"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/fire"
+        android:layout_width="209dp"
+        android:layout_height="82dp"
+        android:layout_marginBottom="24dp"
+        android:text="FIRE"
+        android:textSize="40sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/missiles"
+        android:layout_width="307dp"
+        android:layout_height="51dp"
+        android:layout_marginTop="20dp"
+        android:gravity="center"
+        android:text="number of missiles"
+        android:textSize="30sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.666"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/missileCount"
+        android:layout_width="161dp"
+        android:layout_height="98dp"
+        android:layout_marginBottom="80dp"
+        android:gravity="center"
+        android:text="0"
+        android:textColor="#000000"
+        android:textSize="80sp"
+        app:fontFamily="monospace"
+        app:layout_constraintBottom_toTopOf="@+id/fire"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
+

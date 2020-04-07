@@ -1,0 +1,1 @@
+val vibrator = context?.getSystemService(Context.VIBRATOR_SERVICE) as Vibrator

@@ -101,8 +101,9 @@ class MainActivity : AppCompatActivity() {
                 cb!!.setStyle(ChalkBoard.SMOOTH_MOVE_TWICE)
                 return true
             }
-            party_mode -> {
-                cb!!.setStyle(ChalkBoard.ACTIVATE_PARTY_MODE)
+            recolor_raw -> {
+                cb!!.setStyle(ChalkBoard.RAW_AND_RECOLOR)
+                return true
             }
             action_settings -> {
             }

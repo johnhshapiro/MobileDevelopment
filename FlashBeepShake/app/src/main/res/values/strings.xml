@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">FlashBeepShake</string>
+    <string name="party_mode">Party Mode</string>
+    <string name="light">Flashlight</string>
+    <string name="beep">Beep!</string>
+    <string name="vibrate">Vibrate!</string>
+</resources>

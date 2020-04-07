@@ -58,8 +58,7 @@ class ChalkBoard//Constructor - initialize this View
     //Called from Activity when animation type is selected from menu
     fun setStyle(s: Int) {
         style = s
-        colorFlag = s == COLOR_ACC || s == MOVE_RECOLOR || s == MOVE_ROTATE_RECOLOR || s == ACTIVATE_PARTY_MODE
-        selectColorFlag = s == CHANGE_BOX_COLOR
+        colorFlag = s == COLOR_ACC || s == MOVE_RECOLOR || s == MOVE_ROTATE_RECOLOR || s == RAW_AND_RECOLOR
         moveFlag = s != ROTATE && s != COLOR_ACC
     }
 
@@ -92,6 +91,11 @@ class ChalkBoard//Constructor - initialize this View
             RAW   -> {        //no animation - just jump to spot
                 fraction = 1.0f
                 step()
+            }
+            RAW_AND_RECOLOR -> {
+                fraction = 1.0f
+                step()
+                getObjectAnimator(800, "currColor", 0.0f, 1.0f).start()
             }
             ACCELERATOR  -> { //Accelerate in using AccelerateInterpolator
                 anim = getObjectAnimator(500, "fraction", 0.0f, 1.0f) //local method
@@ -127,21 +131,6 @@ class ChalkBoard//Constructor - initialize this View
                 val together = AnimatorSet()
                 together.play(mover).with(recolor)
                 together.start()
-            }
-            ACTIVATE_PARTY_MODE -> {
-                var initialParty = 0.0f
-                var finalParty = 1.0f
-                val changeColor = getObjectAnimator(1000, "currColor", 0.0f, 1.0f)
-                val changeAgain = getObjectAnimator(1000, "currColor", 1.0f, 2.0f)
-                val groupItDawg = AnimatorSet()
-                groupItDawg.play(changeAgain).after(changeColor)
-                groupItDawg.start()
-//                for (i in 1..3) {
-//                    changeColor.start()
-//                    initialParty += 1.0f
-//                    finalParty += 1.0f
-//                    changeColor = getObjectAnimator(1000, "currColor", initialParty, finalParty)
-//                }
             }
             MOVE_ROTATE_RECOLOR -> {
                 val moveguy = getObjectAnimator(500, "fraction", 0.0f, 1.0f)
@@ -252,7 +241,6 @@ class ChalkBoard//Constructor - initialize this View
 
         // My added animations
         const val SMOOTH_MOVE_TWICE = 42 //Constant to indicate jump to new location and simultaneously recolor
-        const val ACTIVATE_PARTY_MODE = 43 //Constant to indicate constant recoloring
-        const val CHANGE_BOX_COLOR = 44
+        const val RAW_AND_RECOLOR = 43 //Constant to perform the raw move and recolor the box
     }
 }

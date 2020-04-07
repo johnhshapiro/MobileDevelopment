@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".MainActivity">
+
+    <Switch
+        android:id="@+id/flashlightSwitch"
+        android:layout_width="290dp"
+        android:layout_height="0dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_weight="1"
+        android:text="@string/light"
+        android:textSize="40sp" />
+
+    <Button
+        android:id="@+id/beepButton"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:text="@string/beep"
+        android:textSize="48sp" />
+
+    <Button
+        android:id="@+id/vibrateButton"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:text="@string/vibrate"
+        android:textSize="48sp" />
+
+    <Switch
+        android:id="@+id/partyModeSwitch"
+        android:layout_width="299dp"
+        android:layout_height="0dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_weight="1"
+        android:text="@string/party_mode"
+        android:textSize="40sp" />
+
+</LinearLayout>

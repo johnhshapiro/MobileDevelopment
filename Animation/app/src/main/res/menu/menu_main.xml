@@ -8,6 +8,16 @@
         android:title="@string/set_background_color"
         app:showAsAction="never" />
     <item
+        android:id="@+id/double_smooth_move"
+        android:orderInCategory="42"
+        android:title="@string/smooth_twice"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/recolor_raw"
+        android:orderInCategory="48"
+        android:title="@string/raw_and_recolor"
+        app:showAsAction="never" />
+    <item
         android:id="@+id/raw_animation"
         android:orderInCategory="50"
         android:title="@string/raw_anim"
@@ -56,16 +66,6 @@
         android:id="@+id/moverotatecolor_animation"
         android:orderInCategory="62"
         android:title="@string/moverotatecolor_anim"
-        app:showAsAction="never" />
-    <item
-        android:id="@+id/double_smooth_move"
-        android:orderInCategory="63"
-        android:title="@string/smooth_twice"
-        app:showAsAction="never" />
-    <item
-        android:id="@+id/party_mode"
-        android:orderInCategory="63"
-        android:title="@string/party_mode"
         app:showAsAction="never" />
     <item
         android:id="@+id/action_settings"

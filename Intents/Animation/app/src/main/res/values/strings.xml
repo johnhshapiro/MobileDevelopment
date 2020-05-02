@@ -1,0 +1,26 @@
+<resources>
+    <string name="app_name">Animation</string>
+    <string name="action_settings">Settings</string>
+    <!-- Strings used for fragments for navigation -->
+    <string name="first_fragment_label">First Fragment</string>
+    <string name="second_fragment_label">Second Fragment</string>
+    <string name="next">Next</string>
+    <string name="previous">Previous</string>
+
+    <string name="hello_first_fragment">Hello first fragment</string>
+    <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
+
+    <string name="raw_anim">Raw</string>
+    <string name="obj_anim">Smooth Move</string>
+    <string name="acc_anim">Accelerate out</string>
+    <string name="decel_anim">Decelerate in</string>
+    <string name="bounce_anim">Bounce</string>
+    <string name="rotate_anim">Rotate</string>
+    <string name="moverotate_anim">Move and Rotate</string>
+    <string name="color_anim">Animate Color Change</string>
+    <string name="movecolor_anim">Move and Recolor</string>
+    <string name="moverotatecolor_anim">Move and Rotate, Then Color</string>
+    <string name="smooth_twice">Smooth Move Twice</string>
+    <string name="set_background_color">Select Background Color</string>
+    <string name="raw_and_recolor">Raw then Recolor</string>
+</resources>

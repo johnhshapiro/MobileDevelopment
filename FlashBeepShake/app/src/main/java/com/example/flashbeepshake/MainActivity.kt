@@ -18,30 +18,37 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        val cameraManager = getSystemService(Context.CAMERA_SERVICE) as CameraManager
-        val cameraId = cameraManager.cameraIdList[0]
-        val tone = ToneGenerator(AudioManager.STREAM_MUSIC, 100)
-        val vibrator = getSystemService(Context.VIBRATOR_SERVICE) as Vibrator
-
         flashlightSwitch.setOnCheckedChangeListener { _, isChecked ->
-            if (isChecked)
-                cameraManager.setTorchMode(cameraId, true)
-            else
-                cameraManager.setTorchMode(cameraId, false)
+            toggleFlash(isChecked)
         }
 
         beepButton.setOnClickListener {
-            tone.startTone(ToneGenerator.TONE_DTMF_3, 600)
+            beep()
         }
 
         vibrateButton.setOnClickListener {
-            val vibrator = getSystemService(Context.VIBRATOR_SERVICE) as Vibrator
-            Log.d("AAAAAAAH", vibrator.hasVibrator().toString())
-
-            if (vibrator.hasVibrator()) { // Vibrator availability checking
-                vibrator.vibrate(VibrationEffect.createOneShot(500, VibrationEffect.DEFAULT_AMPLITUDE))
-            }
+            vibratePhone()
         }
+    }
+    private fun vibratePhone() {
+        val vibrator = getSystemService(Context.VIBRATOR_SERVICE) as Vibrator
+        if (Build.VERSION.SDK_INT >= 26) {
+            vibrator.vibrate(VibrationEffect.createOneShot(2000, VibrationEffect.DEFAULT_AMPLITUDE))
+        } else {
+            vibrator.vibrate(1000)
+        }
+    }
 
+    private fun beep() {
+        val tone = ToneGenerator(AudioManager.STREAM_MUSIC, 100)
+        tone.startTone(ToneGenerator.TONE_DTMF_3, 600)
+    }
+    private fun toggleFlash(isChecked: Boolean) {
+        val cameraManager = getSystemService(Context.CAMERA_SERVICE) as CameraManager
+        val cameraId = cameraManager.cameraIdList[0]
+        if (isChecked)
+            cameraManager.setTorchMode(cameraId, true)
+        else
+            cameraManager.setTorchMode(cameraId, false)
     }
 }

@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">TalkerM</string>
+
+    <string name="intro">TalkerM Starting\n\n</string>
+    <string name="action_settings">Settings</string>
+    <string name="package_name">com.example.aaron.talkerm</string>
+    <string name="scan_button"> Scan </string>
+    <string name="vibrate_button"> Vibrate </string>
+    <string name="beep_button"> Beep </string>
+    <string name="light_button"> Flashlight </string>
+    <string name="send_hint"> Message to send </string>
+    <string name="connect_button">Find connection</string>
+</resources>

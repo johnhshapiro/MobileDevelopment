@@ -166,7 +166,7 @@ class MainActivity : AppCompatActivity(), SensorEventListener {
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
         return when (item.itemId) {
-            R.id.action_settings -> {
+            R.id.action_help -> {
                 allVisibilityToGone()
                 instructions.visibility = View.VISIBLE
                 close_instructions.visibility = View.VISIBLE

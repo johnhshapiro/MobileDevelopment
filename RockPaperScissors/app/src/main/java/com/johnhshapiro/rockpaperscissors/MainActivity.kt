@@ -7,10 +7,13 @@ import android.hardware.SensorEventListener
 import android.hardware.SensorManager
 import android.os.Bundle
 import android.os.CountDownTimer
-import com.google.android.material.snackbar.Snackbar
+import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import android.view.Menu
 import android.view.MenuItem
+import android.view.View
+import com.google.firebase.firestore.ktx.firestore
+import com.google.firebase.ktx.Firebase
 
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.content_main.*
@@ -42,7 +45,23 @@ class MainActivity : AppCompatActivity(), SensorEventListener {
         setContentView(R.layout.activity_main)
         setSupportActionBar(toolbar)
 
-        val noString = getString(R.string.no_string)
+        // Create reference to firestore database and update streak in real time
+        val db = Firebase.firestore
+        val docRef = db.collection("highestScore").document("goat")
+        docRef.addSnapshotListener { snapshot, e ->
+            if (e != null) {
+                Log.w("exists", "Listen failed.", e)
+                return@addSnapshotListener
+            }
+
+            if (snapshot != null && snapshot.exists()) {
+                Log.d("has data", "Current data: ${snapshot.data}")
+                best_streak_count.text = snapshot.getString("score")
+            } else {
+                Log.d("whoops", "Current data: null")
+            }
+        }
+
         val cheerString = getString(R.string.cheer_string)
         val choices = arrayOf(
             getString(R.string.rock_string),
@@ -52,7 +71,8 @@ class MainActivity : AppCompatActivity(), SensorEventListener {
         val loser = getString(R.string.lose)
         val drawer = getString(R.string.draw)
         var streakCount = 0
-        val manager = supportFragmentManager
+        close_instructions.visibility = View.GONE
+        instructions.visibility = View.GONE
 
         sensorManager = getSystemService(Context.SENSOR_SERVICE) as SensorManager
         sensorManager.registerListener(
@@ -108,6 +128,20 @@ class MainActivity : AppCompatActivity(), SensorEventListener {
                         (randomOpponentChoice == 2 && userChoice == 1) || (randomOpponentChoice == 1 && userChoice == 0) || (randomOpponentChoice == 0 && userChoice == 2) -> {
                             result = loser
                             streakCount = 0
+                            docRef.get()
+                                .addOnSuccessListener { document ->
+                                    if (document != null) {
+                                        Log.d("exists", "DocumentSnapshot data: ${document.data}")
+                                        if (document.getString("score")?.toInt() ?: 0 < streakCount) {
+                                            db.collection("highestScore").document("goat").update("score", streakCount.toString())
+                                        }
+                                    } else {
+                                        Log.d("doesn't exit", "No such document")
+                                    }
+                                }
+                                .addOnFailureListener { exception ->
+                                    Log.d("error", "get failed with ", exception)
+                                }
                         }
                         else -> result = drawer
                     }
@@ -132,8 +166,37 @@ class MainActivity : AppCompatActivity(), SensorEventListener {
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
         return when (item.itemId) {
-            R.id.action_settings -> true
+            R.id.action_settings -> {
+                allVisibilityToGone()
+                instructions.visibility = View.VISIBLE
+                close_instructions.visibility = View.VISIBLE
+                close_instructions.setOnClickListener {
+                    allVisibilityToVisible()
+                    instructions.visibility = View.GONE
+                    close_instructions.visibility = View.GONE
+                }
+                return true
+            }
             else -> super.onOptionsItemSelected(item)
         }
+    }
+
+    private fun allVisibilityToGone() {
+        countdown.visibility = View.GONE
+        user_intro.visibility = View.GONE
+        user_move.visibility = View.GONE
+        opponent_intro.visibility = View.GONE
+        opponent_choice.visibility = View.GONE
+        result_display.visibility = View.GONE
+        play_game.visibility = View.GONE
+    }
+    fun allVisibilityToVisible() {
+        countdown.visibility = View.VISIBLE
+        user_intro.visibility = View.VISIBLE
+        user_move.visibility = View.VISIBLE
+        opponent_intro.visibility = View.VISIBLE
+        opponent_choice.visibility = View.VISIBLE
+        result_display.visibility = View.VISIBLE
+        play_game.visibility = View.VISIBLE
     }
 }

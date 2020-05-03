@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     app:layout_behavior="@string/appbar_scrolling_view_behavior">
@@ -15,9 +16,31 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <TextView
-            android:id="@+id/win_streak"
+            android:id="@+id/best_streak_text"
             android:layout_width="wrap_content"
             android:layout_height="@dimen/streak_height"
+            android:background="@android:color/background_dark"
+            android:gravity="center_vertical|end"
+            android:text="@string/best"
+            android:textColor="@android:color/background_light"
+            android:textSize="24sp" />
+
+        <TextView
+            android:id="@+id/best_streak_count"
+            android:layout_width="@dimen/streak_num_width"
+            android:layout_height="@dimen/streak_height"
+            android:layout_weight="1"
+            android:background="@android:color/background_dark"
+            android:gravity="clip_horizontal|center"
+            android:text="@string/zero_streak"
+            android:textColor="@android:color/background_light"
+            android:textSize="24sp" />
+
+        <TextView
+            android:id="@+id/win_streak_text2"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/streak_height"
+            android:layout_weight="1"
             android:background="@android:color/background_dark"
             android:gravity="center_vertical|end"
             android:text="@string/streak"
@@ -110,5 +133,28 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/win_streak" />
+
+    <TextView
+        android:id="@+id/instructions"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/how_to_play"
+        app:layout_constraintBottom_toTopOf="@+id/close_instructions"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:visibility="gone" />
+
+    <Button
+        android:id="@+id/close_instructions"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="52dp"
+        android:text="Close Instructions"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:visibility="gone" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

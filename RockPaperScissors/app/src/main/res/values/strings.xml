@@ -14,7 +14,9 @@
     <string name="streak">Win Streak: </string>
     <string name="zero_streak">0</string>
     <string name="action_settings">Settings</string>
+    <string name="best">Best Ever:</string>
 
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="how_to_play">
+        \n1. Press go to start a game.\n2. During the countdown:\n\tDo nothing to choose rock\n\tChop with your phone to choose scissors\n\tTurn your phone away then back to choose paper\n3. REPEAT!
+    </string>
 </resources>

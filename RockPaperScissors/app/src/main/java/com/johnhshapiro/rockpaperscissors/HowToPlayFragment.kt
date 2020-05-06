@@ -6,9 +6,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 
-/**
- * A simple [Fragment] subclass.
- */
 class HowToPlayFragment : Fragment() {
 
     override fun onCreateView(
@@ -19,4 +16,7 @@ class HowToPlayFragment : Fragment() {
         return inflater.inflate(R.layout.fragment_how_to_play, container, false)
     }
 
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+    }
 }

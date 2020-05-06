@@ -1,5 +1,7 @@
 <resources>
-    <string name="app_name">RPS X-treme</string>
+<!--    Used on main game page-->
+    <string name="return_to_game">Play!</string>
+    <string name="app_name">Rock, Paper, Scissors</string>
     <string name="start_game">GO!</string>
     <string name="no_string"></string>
     <string name="rock_string">ROCK!</string>
@@ -13,10 +15,22 @@
     <string name="draw">It\'s a draw.</string>
     <string name="streak">Win Streak: </string>
     <string name="zero_streak">0</string>
-    <string name="help">Help</string>
     <string name="best">Best Ever:</string>
 
+<!--    Used on how to play-->
+    <string name="rules_label">How To Play</string>
     <string name="how_to_play">
-        \n1. Press go to start a game.\n2. During the countdown:\n\tDo nothing to choose rock\n\tChop with your phone to choose scissors\n\tTurn your phone away then back to choose paper\n3. REPEAT!
+        \n1. Press go to start a game.\n\n2. During the countdown:\nDo nothing to choose rock.\nChop with your phone to choose scissors.\nTurn your phone away then back to choose paper.\n\n3. REPEAT!
     </string>
+
+<!--    Used on first time user page-->
+    <string name="first_time">You must be new here! Enter the username that will display on the leader board:</string>
+    <string name="username_explanation">(username must contain numbers and letters only, and be less than 10 characters)</string>
+    <string name="username">username</string>
+    <string name="alpha_numeric">aAbBcCdDeEfFgGhHiIjJkKlLmMnNoOpPqQrRsStTuUvVwWxXyYzZ0123456789</string>
+    <string name="first_time_play_button">PLAY</string>
+
+<!--    Strings Used on Leader Board-->
+    <string name="leader">Leader Board</string>
+
 </resources>
